@@ -10,7 +10,9 @@ class ListingController extends Controller
 {
     public function index() {
         return view('listings.index', [
-            'listings' => Listing::latest()->filter(request(['tag', 'search']))->get()
+            'listings' => Listing::latest()
+                ->filter(request(['tag', 'search']))
+                ->paginate(6)
         ]);
     }
 
@@ -25,15 +27,21 @@ class ListingController extends Controller
     }
 
     public function store(Request $request) {
+
         $formFields = $request->validate([
             'title' => 'required',
             'company' => 'required',
             'location' => 'required',
             'website' => 'required',
+            'logo' => 'required',
             'email' => ['required', 'email'],
             'tags' => 'required',
             'description' => ['required', Rule::unique('listings', 'description')]
         ]);
+
+        if ($request->logo) {
+            $formFields['logo'] = $request->logo->store('logos', 'public');
+        }
         
         Listing::create($formFields);
 
