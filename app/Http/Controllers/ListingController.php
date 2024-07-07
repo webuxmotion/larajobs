@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class ListingController extends Controller
@@ -72,5 +73,17 @@ class ListingController extends Controller
         $listing->update($formFields);
 
         return back()->with('message', 'Listing updated successfully!');
+    }
+
+    public function destroy(Listing $listing) {
+        $storage_path = storage_path("app/public/" . $listing->logo);
+
+        if (is_file($storage_path) && file_exists($storage_path)) {
+            unlink($storage_path);
+        }
+        
+        $listing->delete();
+
+        return redirect('/')->with("message", "Listing deleted successfully!");
     }
 }
