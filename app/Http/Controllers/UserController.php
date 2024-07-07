@@ -59,7 +59,7 @@ class UserController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Invalid email or password',
+            'email' => 'Invalid Credentials',
         ]);
     }
 }
