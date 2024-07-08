@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 // Listings
 Route::get('/', [ListingController::class, 'index']);
+Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
 Route::get('/create-listing', [ListingController::class, 'create'])->middleware('auth');
