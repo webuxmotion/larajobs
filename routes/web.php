@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\SocialLoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,8 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 Route::post('/users', [UserController::class, 'store']);
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+Route::get('/socialite/{driver}', [SocialLoginController::class, 'toProvider'])
+    ->where('driver', 'github|google');
+Route::get('/auth/{driver}/login', [SocialLoginController::class, 'handleCallback'])
+    ->where('driver', 'github|google');

@@ -46,6 +46,26 @@
                 </button>
             </div>
 
+            <div class="mb-6">
+                <a 
+                    href="/socialite/google" 
+                    class="inline-block border-2 border-black py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+                >
+                    <i class="fa-brands fa-google"></i>
+                    Login with Google
+                </a>
+            </div>
+
+            <div class="mb-6">
+                <a 
+                    href="/socialite/github" 
+                    class="inline-block border-2 border-black py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black"
+                >
+                    <i class="fa-brands fa-github"></i>
+                    Login with Github
+                </a>
+            </div>
+
             <div class="mt-8">
                 <p>
                     Don't have an account?

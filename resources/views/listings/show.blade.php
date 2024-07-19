@@ -8,7 +8,7 @@
         <div class="mx-4">
             <x-card class="p-24 bg-black">
                 <div class="flex flex-col items-center justify-center text-center">
-                    <img class="w-48 mr-6 mb-6" src="{{ asset($listing->logo ? $listing->logo : 'images/no-image.png') }}"
+                    <img class="w-48 mr-6 mb-6" src="{{ asset($listing->logo ? 'storage/' . $listing->logo : 'images/no-image.png') }}"
                         alt="" />
 
                     <h3 class="text-2xl mb-2">{{ $listing->title }}</h3>
